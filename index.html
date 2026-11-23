@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f6fb">
+    <meta name="description" content="A student dashboard for keeping track of classes, attendance, marks, and campus updates.">
+    <title>Campusly | Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+        <button class="sidebar-scrim" id="sidebar-scrim" type="button" aria-label="Close navigation" hidden></button>
+
+        <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+            <a class="brand" href="#overview" aria-label="Campusly dashboard home">
+                <span class="brand-mark" aria-hidden="true">C</span>
+                <span>campusly<span class="brand-dot">.</span></span>
+            </a>
+
+            <div class="campus-switcher">
+                <span class="campus-icon" aria-hidden="true">N</span>
+                <span class="campus-name"><strong>Northstar College</strong><small>Student portal</small></span>
+                <span class="switcher-chevron" aria-hidden="true">⌄</span>
+            </div>
+
+            <p class="nav-label">MENU</p>
+            <nav class="side-nav">
+                <a class="nav-link is-active" href="#overview">
+                    <span class="nav-icon" aria-hidden="true">⌂</span> Overview
+                </a>
+                <a class="nav-link" href="#schedule">
+                    <span class="nav-icon" aria-hidden="true">▦</span> Timetable
+                </a>
+                <a class="nav-link" href="#subjects">
+                    <span class="nav-icon" aria-hidden="true">▤</span> Subjects
+                </a>
+                <a class="nav-link" href="#announcements">
+                    <span class="nav-icon" aria-hidden="true">▱</span> Announcements
+                    <span class="nav-count" id="announcement-count">2</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="help-card">
+                    <span class="help-spark" aria-hidden="true">✦</span>
+                    <strong>Need a hand?</strong>
+                    <p>Catch up on the latest notes from your campus.</p>
+                    <a href="#announcements">Browse announcements <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="sidebar-profile">
+                    <span class="avatar avatar-small" aria-hidden="true">AS</span>
+                    <span><strong>Aarav Sharma</strong><small>Student · Year 2</small></span>
+                    <span class="profile-more" aria-hidden="true">•••</span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-column">
+            <header class="topbar">
+                <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+                    <span aria-hidden="true">☰</span>
+                </button>
+                <div class="breadcrumb"><span>Northstar College</span><span aria-hidden="true">/</span><strong>Student dashboard</strong></div>
+                <div class="topbar-actions">
+                    <a class="icon-button notification-link" href="#notifications" aria-label="Jump to notifications">
+                        <span aria-hidden="true">♧</span>
+                        <span class="notification-dot" aria-hidden="true"></span>
+                    </a>
+                    <span class="topbar-divider" aria-hidden="true"></span>
+                    <a class="topbar-user" href="#profile">
+                        <span class="avatar avatar-top" aria-hidden="true">AS</span>
+                        <span class="topbar-user-name">Aarav Sharma</span>
+                        <span class="switcher-chevron" aria-hidden="true">⌄</span>
+                    </a>
+                </div>
+            </header>
+
+            <main id="overview">
+                <div class="page-content">
+                    <section class="welcome-row" id="profile" aria-labelledby="welcome-title">
+                        <div>
+                            <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR CAMPUS, AT A GLANCE</p>
+                            <h1 id="welcome-title">Good morning, Aarav <span class="wave" aria-hidden="true">✦</span></h1>
+                            <p class="welcome-copy">Here’s what’s happening with your studies today.</p>
+                        </div>
+                        <div class="date-pill"><span aria-hidden="true">▣</span><time id="today-label">Tuesday, 24 November</time></div>
+                    </section>
+
+                    <section class="stats-grid" aria-label="Academic overview">
+                        <article class="stat-card stat-attendance">
+                            <div class="stat-topline"><span>Attendance</span><span class="stat-icon mint" aria-hidden="true">↗</span></div>
+                            <div class="stat-main"><strong>92<span>%</span></strong><span class="stat-caption positive">↑ 4% <span>this semester</span></span></div>
+                            <div class="mini-progress"><span style="width: 92%"></span></div>
+                            <p class="stat-foot">Great work—keep it above 85%.</p>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-topline"><span>Average marks</span><span class="stat-icon lilac" aria-hidden="true">✳</span></div>
+                            <div class="stat-main"><strong>86<span class="unit">/100</span></strong><span class="stat-caption positive">↑ 2.5% <span>vs last term</span></span></div>
+                            <div class="mini-progress lilac-progress"><span style="width: 86%"></span></div>
+                            <p class="stat-foot">You’re doing well across your subjects.</p>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-topline"><span>Classes today</span><span class="stat-icon peach" aria-hidden="true">◷</span></div>
+                            <div class="stat-main"><strong>2</strong><span class="stat-caption">Next up <b>9:30 AM</b></span></div>
+                            <div class="class-preview"><span class="class-preview-dot"></span><span>Web Development</span><span class="class-room">Lab 106</span></div>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-topline"><span>Assignments</span><span class="stat-icon blue" aria-hidden="true">✓</span></div>
+                            <div class="stat-main"><strong>2</strong><span class="stat-caption due-soon">Due this week</span></div>
+                            <div class="assignment-preview"><span class="due-indicator"></span><span>Database project</span><span class="due-date">Fri</span></div>
+                        </article>
+                    </section>
+
+                    <section class="content-grid">
+                        <article class="panel schedule-panel" id="schedule">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow">YOUR WEEK</p>
+                                    <h2>This week’s timetable</h2>
+                                </div>
+                                <a class="text-link" href="#schedule">Full timetable <span aria-hidden="true">→</span></a>
+                            </div>
+
+                            <div class="day-tabs" role="group" aria-label="Choose timetable day">
+                                <button class="day-tab" type="button" data-day="Monday" aria-pressed="false">Mon <span>23</span></button>
+                                <button class="day-tab is-selected" type="button" data-day="Tuesday" aria-pressed="true">Tue <span>24</span></button>
+                                <button class="day-tab" type="button" data-day="Wednesday" aria-pressed="false">Wed <span>25</span></button>
+                                <button class="day-tab" type="button" data-day="Thursday" aria-pressed="false">Thu <span>26</span></button>
+                                <button class="day-tab" type="button" data-day="Friday" aria-pressed="false">Fri <span>27</span></button>
+                            </div>
+
+                            <div class="schedule-list" id="schedule-list">
+                                <article class="schedule-item" data-day="Monday">
+                                    <time class="schedule-time">09:00<small>10:00</small></time>
+                                    <span class="subject-marker marker-mint"></span>
+                                    <div class="schedule-details"><strong>Computer Networks</strong><span>Lecture · Room 108</span></div>
+                                    <span class="schedule-tag tag-mint">Lecture</span>
+                                </article>
+                                <article class="schedule-item is-current" data-day="Monday">
+                                    <time class="schedule-time">10:30<small>11:30</small></time>
+                                    <span class="subject-marker marker-lilac"></span>
+                                    <div class="schedule-details"><strong>Data Structures</strong><span>Practical · Lab 204</span></div>
+                                    <span class="schedule-tag tag-lilac">In person</span>
+                                </article>
+                                <article class="schedule-item" data-day="Monday">
+                                    <time class="schedule-time">13:00<small>14:00</small></time>
+                                    <span class="subject-marker marker-peach"></span>
+                                    <div class="schedule-details"><strong>Database Systems</strong><span>Lecture · Room 312</span></div>
+                                    <span class="schedule-tag tag-peach">Lecture</span>
+                                </article>
+                                <article class="schedule-item is-current" data-day="Tuesday">
+                                    <time class="schedule-time">09:30<small>10:30</small></time>
+                                    <span class="subject-marker marker-blue"></span>
+                                    <div class="schedule-details"><strong>Web Development</strong><span>Workshop · Lab 106</span></div>
+                                    <span class="schedule-tag tag-blue">Workshop</span>
+                                </article>
+                                <article class="schedule-item" data-day="Tuesday">
+                                    <time class="schedule-time">11:00<small>12:00</small></time>
+                                    <span class="subject-marker marker-mint"></span>
+                                    <div class="schedule-details"><strong>Computer Networks</strong><span>Lecture · Room 108</span></div>
+                                    <span class="schedule-tag tag-mint">Lecture</span>
+                                </article>
+                                <article class="schedule-item" data-day="Wednesday" hidden>
+                                    <time class="schedule-time">10:00<small>11:00</small></time>
+                                    <span class="subject-marker marker-peach"></span>
+                                    <div class="schedule-details"><strong>Database Systems</strong><span>Practical · Lab 302</span></div>
+                                    <span class="schedule-tag tag-peach">Practical</span>
+                                </article>
+                                <article class="schedule-item" data-day="Wednesday" hidden>
+                                    <time class="schedule-time">12:00<small>13:00</small></time>
+                                    <span class="subject-marker marker-lilac"></span>
+                                    <div class="schedule-details"><strong>Data Structures</strong><span>Tutorial · Room 204</span></div>
+                                    <span class="schedule-tag tag-lilac">Tutorial</span>
+                                </article>
+                                <article class="schedule-item" data-day="Thursday" hidden>
+                                    <time class="schedule-time">09:00<small>10:00</small></time>
+                                    <span class="subject-marker marker-blue"></span>
+                                    <div class="schedule-details"><strong>Web Development</strong><span>Lecture · Room 106</span></div>
+                                    <span class="schedule-tag tag-blue">Lecture</span>
+                                </article>
+                                <article class="schedule-item" data-day="Thursday" hidden>
+                                    <time class="schedule-time">13:30<small>14:30</small></time>
+                                    <span class="subject-marker marker-mint"></span>
+                                    <div class="schedule-details"><strong>Computer Networks</strong><span>Tutorial · Room 108</span></div>
+                                    <span class="schedule-tag tag-mint">Tutorial</span>
+                                </article>
+                                <article class="schedule-item" data-day="Friday" hidden>
+                                    <time class="schedule-time">10:30<small>11:30</small></time>
+                                    <span class="subject-marker marker-peach"></span>
+                                    <div class="schedule-details"><strong>Database Systems</strong><span>Lecture · Room 312</span></div>
+                                    <span class="schedule-tag tag-peach">Lecture</span>
+                                </article>
+                                <article class="schedule-item" data-day="Friday" hidden>
+                                    <time class="schedule-time">12:00<small>13:00</small></time>
+                                    <span class="subject-marker marker-blue"></span>
+                                    <div class="schedule-details"><strong>Web Development</strong><span>Studio · Lab 106</span></div>
+                                    <span class="schedule-tag tag-blue">Studio</span>
+                                </article>
+                            </div>
+                            <p class="empty-schedule" id="empty-schedule" hidden>No classes are scheduled for this day. Enjoy the extra study time!</p>
+                        </article>
+
+                        <article class="panel attendance-panel">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow">SHOWING UP</p>
+                                    <h2>Attendance</h2>
+                                </div>
+                                <button class="more-button" type="button" aria-label="Attendance information">•••</button>
+                            </div>
+                            <div class="attendance-summary">
+                                <div class="attendance-ring" role="img" aria-label="92 percent attendance"><span><strong>92%</strong><small>Overall</small></span></div>
+                                <div class="attendance-legend">
+                                    <p><span class="legend-dot present"></span><span>Present</span><strong>46</strong></p>
+                                    <p><span class="legend-dot absent"></span><span>Absent</span><strong>3</strong></p>
+                                    <p><span class="legend-dot excused"></span><span>Excused</span><strong>1</strong></p>
+                                </div>
+                            </div>
+                            <div class="attendance-note"><span aria-hidden="true">✦</span><p>You’re <strong>7%</strong> above the required attendance. Keep it up!</p></div>
+                        </article>
+                    </section>
+
+                    <section class="lower-grid">
+                        <article class="panel subjects-panel" id="subjects">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow">KEEP IT UP</p>
+                                    <h2>Your subjects</h2>
+                                </div>
+                                <a class="text-link" href="#subjects">All subjects <span aria-hidden="true">→</span></a>
+                            </div>
+                            <div class="subject-list">
+                                <div class="subject-row">
+                                    <span class="subject-icon icon-mint">CN</span>
+                                    <div class="subject-info"><strong>Computer Networks</strong><span>Prof. Meera Nair</span></div>
+                                    <div class="subject-score"><strong>91</strong><span>/100</span></div>
+                                    <div class="score-track"><span class="score-mint" style="width: 91%"></span></div>
+                                </div>
+                                <div class="subject-row">
+                                    <span class="subject-icon icon-lilac">DS</span>
+                                    <div class="subject-info"><strong>Data Structures</strong><span>Prof. Karan Patel</span></div>
+                                    <div class="subject-score"><strong>87</strong><span>/100</span></div>
+                                    <div class="score-track"><span class="score-lilac" style="width: 87%"></span></div>
+                                </div>
+                                <div class="subject-row">
+                                    <span class="subject-icon icon-peach">DB</span>
+                                    <div class="subject-info"><strong>Database Systems</strong><span>Prof. Nisha Rao</span></div>
+                                    <div class="subject-score"><strong>82</strong><span>/100</span></div>
+                                    <div class="score-track"><span class="score-peach" style="width: 82%"></span></div>
+                                </div>
+                                <div class="subject-row">
+                                    <span class="subject-icon icon-blue">WD</span>
+                                    <div class="subject-info"><strong>Web Development</strong><span>Prof. Aditya Sen</span></div>
+                                    <div class="subject-score"><strong>84</strong><span>/100</span></div>
+                                    <div class="score-track"><span class="score-blue" style="width: 84%"></span></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="panel notifications-panel" id="notifications">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow">DON’T MISS A THING</p>
+                                    <h2>Notifications <span class="heading-count" id="notification-count">3</span></h2>
+                                </div>
+                                <a class="text-link" href="#announcements">See updates <span aria-hidden="true">→</span></a>
+                            </div>
+                            <div class="notification-list" id="notification-list">
+                                <article class="notification-item">
+                                    <span class="notification-icon notif-peach" aria-hidden="true">!</span>
+                                    <div><strong>Database project due soon</strong><p>Submit by Friday, 5:00 PM</p></div>
+                                    <button class="dismiss-button" type="button" data-dismiss-notification aria-label="Dismiss Database project notification">×</button>
+                                </article>
+                                <article class="notification-item">
+                                    <span class="notification-icon notif-blue" aria-hidden="true">↗</span>
+                                    <div><strong>Your marks are updated</strong><p>Computer Networks · Quiz 3</p></div>
+                                    <button class="dismiss-button" type="button" data-dismiss-notification aria-label="Dismiss marks notification">×</button>
+                                </article>
+                                <article class="notification-item">
+                                    <span class="notification-icon notif-mint" aria-hidden="true">◷</span>
+                                    <div><strong>Classroom changed</strong><p>Web Development · Lab 106</p></div>
+                                    <button class="dismiss-button" type="button" data-dismiss-notification aria-label="Dismiss classroom notification">×</button>
+                                </article>
+                            </div>
+                            <p class="empty-notifications" id="empty-notifications" hidden>You’re all caught up.</p>
+                            <p class="sr-only" id="dashboard-status" role="status" aria-live="polite"></p>
+                        </article>
+                    </section>
+
+                    <section class="panel announcements-panel" id="announcements">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">FROM YOUR CAMPUS</p>
+                                <h2>Announcements</h2>
+                            </div>
+                            <button class="text-link button-link" id="mark-all-read" type="button">Mark all as read <span aria-hidden="true">✓</span></button>
+                        </div>
+                        <div class="announcement-grid">
+                            <article class="announcement-card" data-read="false">
+                                <div class="announcement-meta"><span class="announcement-tag tag-event">CAMPUS EVENT</span><span>Today · 9:15 AM</span><span class="new-badge">NEW</span></div>
+                                <h3>Innovation Week kicks off next Monday</h3>
+                                <p>Join workshops, student demos, and guest talks throughout the week. Registration is open at the student center.</p>
+                                <a href="#announcements">View details <span aria-hidden="true">→</span></a>
+                            </article>
+                            <article class="announcement-card" data-read="false">
+                                <div class="announcement-meta"><span class="announcement-tag tag-academic">ACADEMIC</span><span>Yesterday · 3:40 PM</span><span class="new-badge">NEW</span></div>
+                                <h3>Mid-term study rooms are now bookable</h3>
+                                <p>Reserve a quiet study space in the library for your group. Slots are available from 8 AM to 8 PM.</p>
+                                <a href="#announcements">View details <span aria-hidden="true">→</span></a>
+                            </article>
+                        </div>
+                    </section>
+
+                    <p class="demo-note">Student names, subjects, schedules, and results shown here are sample demo data.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
